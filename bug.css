@@ -1,0 +1,9 @@
+The following CSS code snippet demonstrates an uncommon error related to the `content` property in the `::before` pseudo-element:
+
+```css
+.container::before {
+  content: url('missing-image.jpg');
+}
+```
+
+This code attempts to set the content of the pseudo-element to an image.  However, if the image file ('missing-image.jpg') does not exist or is incorrectly referenced, the browser will silently fail and won't display anything. This can be particularly confusing for developers who expect an error message or an indication of the issue.
