@@ -1,0 +1,22 @@
+To solve this, use a fallback image or handle the missing image case gracefully.  Here's an improved version:
+
+```css
+.container::before {
+  content: url('image.jpg'); /* Use a default image if available */
+  content: url('fallback.jpg') !important; /*Fallback image if image.jpg is not available*/
+}
+```
+
+Or, more robustly using JavaScript to check for image existence before setting the `content` property dynamically:
+
+```javascript
+const image = document.getElementById('myImage');
+if (image && image.complete && image.naturalHeight !== 0) {
+  //Image is loaded and available, use the image
+  document.querySelector('.container').style.content = 'url("image.jpg")';
+} else {
+  //Image is unavailable
+  //Handle gracefully here (maybe display an error message, use a fallback etc...)
+}
+```
+This more robust method checks if the image exists and only uses the URL if it is valid and complete.
